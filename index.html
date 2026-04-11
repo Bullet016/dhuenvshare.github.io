@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>东华大学环境科学与工程学院 - 课程资料共享平台</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo-area">
+    <img class="logo" src="https://www.dhu.edu.cn/__local/CUSTOM_001/dhu_logo.png" alt="东华大学校徽">
+    <div class="college-name">环境科学与工程学院</div>
+  </div>
+  <h2>课程资料共享平台</h2>
+  <div class="menu">
+    <a href="#home" class="active">首页</a>
+    <a href="#env">环境科学与工程</a>
+    <a href="#public">公共基础课</a>
+    <a href="#outline">培养方案</a>
+    <a href="#contribute">贡献指南</a>
+    <a href="#about">关于平台</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="搜索课程名称…" oninput="doSearch()">
+  </div>
+
+  <section id="home" class="page">
+    <h1>东华大学环境科学与工程学院<br>课程资料共享平台</h1>
+    <p class="tip">免费共享｜学习使用｜禁止商用</p>
+
+    <div class="card-list" id="cardList">
+      <div class="card" data-name="环境工程原理">
+        <h3>环境工程原理</h3>
+        <a href="files/环境工程原理课件.pdf" target="_blank">下载</a>
+        <a href="https://docs.google.com/viewer?url=https://你的ID.github.io/course_site/files/环境工程原理课件.pdf" target="_blank" class="view">在线预览</a>
+      </div>
+      <div class="card" data-name="环境监测">
+        <h3>环境监测</h3>
+        <a href="files/环境监测复习笔记.pdf" target="_blank">下载</a>
+        <a href="https://docs.google.com/viewer?url=https://你的ID.github.io/course_site/files/环境监测复习笔记.pdf" target="_blank" class="view">在线预览</a>
+      </div>
+      <div class="card" data-name="水污染控制工程">
+        <h3>水污染控制工程</h3>
+        <a href="files/水污染控制工程.pptx" target="_blank">下载</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="env" class="page" style="display:none;">
+    <h1>环境科学与工程专业课程</h1>
+    <ul class="file-list" id="envList">
+      <li data-name="环境工程原理">环境工程原理 课件 <a href="files/环境工程原理课件.pdf">下载</a> <a href="#" class="view-btn" data-file="环境工程原理课件.pdf">在线预览</a></li>
+      <li data-name="环境监测">环境监测 复习资料 <a href="files/环境监测复习笔记.pdf">下载</a> <a href="#" class="view-btn" data-file="环境监测复习笔记.pdf">在线预览</a></li>
+      <li data-name="水污染控制工程">水污染控制工程 <a href="files/水污染控制工程.pptx">下载</a></li>
+      <li data-name="大气污染控制工程">大气污染控制工程 <a href="#">下载</a></li>
+      <li data-name="环境微生物学">环境微生物学 <a href="#">下载</a></li>
+      <li data-name="环境规划与管理">环境规划与管理 <a href="#">下载</a></li>
+      <li data-name="实验报告模板">实验报告模板 <a href="files/实验报告模板.docx">下载</a></li>
+    </ul>
+  </section>
+
+  <section id="public" class="page" style="display:none;">
+    <h1>公共基础课</h1>
+    <ul class="file-list">
+      <li>高等数学 <a href="#">下载</a></li>
+      <li>大学物理 <a href="#">下载</a></li>
+      <li>工程制图 <a href="#">下载</a></li>
+      <li>程序设计 <a href="#">下载</a></li>
+    </ul>
+  </section>
+
+  <section id="outline" class="page" style="display:none;">
+    <h1>培养方案与教学大纲</h1>
+    <ul class="file-list">
+      <li>环境科学与工程培养方案 <a href="#">下载</a></li>
+      <li>课程大纲汇总 <a href="#">下载</a></li>
+    </ul>
+  </section>
+
+  <section id="contribute" class="page" style="display:none;">
+    <h1>资料贡献指南</h1>
+    <ol>
+      <li>命名格式：【课程名】-类型-作者</li>
+      <li>支持：PDF、PPT、DOCX、ZIP</li>
+      <li>发送至学院学习部邮箱</li>
+      <li>审核后24小时内上架</li>
+    </ol>
+  </section>
+
+  <section id="about" class="page" style="display:none;">
+    <h1>关于平台</h1>
+    <p>参考浙江大学「源梦紫金 ZJUSUEE」建设</p>
+    <p>维护：BULLET</p>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
