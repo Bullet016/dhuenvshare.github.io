@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通识教育 - 环院学习资源共享平台</title>
+    <style>
+        :root {
+            --primary: #2E8B57;
+            --primary-light: #71b394;
+            --bg: #ffffff;
+            --bg-secondary: #f8faf9;
+            --text: #2c3e50;
+            --border: #e2efe9;
+            --sidebar-width: 240px;
+            --toc-width: 220px;
+            --header-height: 60px;
+        }
+        .dark-mode {
+            --bg: #1e1e1e;
+            --bg-secondary: #2a2a2a;
+            --text: #e0e0e0;
+            --border: #3a3a3a;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 8px 10px;
+            white-space: nowrap;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        nav a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 15px;
+            width: 180px;
+        }
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.8);
+        }
+        .search-box button {
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .layout {
+            display: flex;
+            margin-top: var(--header-height);
+        }
+        /* 左侧分类栏（通识教育专用） */
+        aside.sidebar {
+            width: var(--sidebar-width);
+            padding: 24px 16px;
+            border-right: 1px solid var(--border);
+            background: var(--bg-secondary);
+            height: calc(100vh - var(--header-height));
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            overflow-y: auto;
+        }
+        .sidebar h3 {
+            font-size: 16px;
+            color: var(--primary);
+            margin: 16px 0 8px;
+            padding-left: 4px;
+        }
+        .sidebar a {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            margin: 6px 0 6px 12px;
+            font-size: 15px;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        .sidebar a:hover {
+            background: var(--border);
+        }
+        .sidebar a.active {
+            background: var(--primary);
+            color: #fff;
+        }
+        main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            margin-right: var(--toc-width);
+            padding: 40px 60px;
+            max-width: 1000px;
+        }
+        aside.toc {
+            width: var(--toc-width);
+            padding: 40px 16px;
+            border-left: 1px solid var(--border);
+            background: var(--bg-secondary);
+            height: calc(100vh - var(--header-height));
+            position: fixed;
+            top: var(--header-height);
+            right: 0;
+            overflow-y: auto;
+        }
+        .toc h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #888;
+        }
+        .toc a {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+        h2 {
+            font-size: 20px;
+            margin: 24px 0 12px;
+        }
+        p {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        /* 课程标签样式 */
+        .course-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .tag {
+            padding: 10px 18px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        @media (max-width: 1200px) {
+            aside.toc { display: none; }
+            main { margin-right: 0; }
+        }
+        @media (max-width: 900px) {
+            aside.sidebar { display: none; }
+            main { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">主页</a>
+            <a href="general.html" class="active">通识教育</a>
+            <a href="#">土木</a>
+            <a href="#">环工</a>
+            <a href="#">环科</a>
+            <a href="#">建环</a>
+            <a href="#">能环</a>
+            <a href="#">环管</a>
+            <a href="#">资源投稿</a>
+        </nav>
+        <div class="header-right">
+            <button class="theme-toggle" onclick="toggleDarkMode()">🌙</button>
+            <div class="search-box">
+                <button>🔍</button>
+                <input type="text" placeholder="搜索资源" id="globalSearch">
+            </div>
+        </div>
+    </header>
+
+    <div class="layout">
+        <!-- 左侧：通识教育分类栏 -->
+        <aside class="sidebar">
+            <h3>📚 通识课程分类</h3>
+            <a class="active">数学类</a>
+            <a>计算机类</a>
+            <a>思政教育类</a>
+            <a>大学物理类</a>
+            <a>其他通识类</a>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main>
+            <h1>通识教育学习资源</h1>
+            <h2>📘 数学类课程资料</h2>
+            <p>点击下方标签查看对应课程资料</p>
+
+            <!-- 数学类 6 个标签 -->
+            <div class="course-tags">
+                <div class="tag">高等数学（1）</div>
+                <div class="tag">高等数学（2）</div>
+                <div class="tag">高等数学（3）</div>
+                <div class="tag">高等数学（4）</div>
+                <div class="tag">线性代数类</div>
+                <div class="tag">概率论与数理统计类</div>
+            </div>
+
+            <h2>📁 课程资料展示区</h2>
+            <p>（此处可放置课件、笔记、习题、复习资料……）</p>
+            <p>（预留大量空白区域，你可自由添加卡片、链接、文件列表）</p>
+        </main>
+
+        <aside class="toc">
+            <h3>当前目录</h3>
+            <a href="#">数学类课程</a>
+            <a href="#">计算机类课程</a>
+            <a href="#">思政类课程</a>
+            <a href="#">大学物理课程</a>
+        </aside>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            document.querySelector('.theme-toggle').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.theme-toggle').textContent = '☀️';
+        }
+        document.getElementById('globalSearch').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') alert('搜索：' + this.value);
+        });
+    </script>
+</body>
+</html>
